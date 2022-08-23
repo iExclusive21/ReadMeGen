@@ -55,7 +55,7 @@ const promptUser = () =>{
         {
             type: 'input',
             message:  'What is your email address?',
-            name: 'Email ',
+            name: 'Email',
         },
 
     ]);
@@ -74,7 +74,9 @@ function writeToFile(fileName, data) {
 const init = () => {
     promptUser()
       // Use writeFileSync method to use promises instead of a callback function
-      .then((data) => fs.writeFileSync('README.md', generateMarkdown(data)))
+      .then((data) => {
+        data.License = data.License.toUpperCase();
+        fs.writeFileSync('README.md', generateMarkdown(data))})
       .then(() => console.log('Successfully wrote to README.md'))
       .catch((err) => console.error(err));
   };
