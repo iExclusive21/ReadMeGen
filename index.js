@@ -1,10 +1,12 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const util = require('util')
+const generatorMarkdown =require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 
 const promptUser = () =>{
-    return inquirer.Prompt([
+    return inquirer.prompt([
         {
             type: 'input',
             message:  'What is your project title?',
@@ -59,55 +61,25 @@ const promptUser = () =>{
     ]);
 }
 
-console.log("hello");
-const generateReadMe = ({Title, Description, Installation, Usage, License, Contributors, Questions, Test, Github, Email}) =>
-`
-
-## Installation
-${Installation}
-
-# ${Title}
-
-## Description
-
-${Description}
-
-## Getting Started
-
-### Dependencies
-
-${Test}
-
-### Installation
-
-${Installation}
-
-### Contributors
-
-${Contributors}
-
-### Usage 
-${Usage}
-
-### Github
-${Github}
-
-### Email
-${Email}
-
-
-## Help
 
 
 
-`
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
 
 }
 
 // TODO: Create a function to initialize app
-function init() {}
-
+// function init() {}
+const init = () => {
+    promptUser()
+      // Use writeFileSync method to use promises instead of a callback function
+      .then((answers) => fs.writeFileSync('README.md', generateReadMe(answers)))
+      console.log(answers)
+      .then(() => console.log('Successfully wrote to index.html'))
+      .catch((err) => console.error(err));
+  };
+  
+  init();
 // Function call to initialize app
 init();
