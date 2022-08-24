@@ -42,3 +42,7 @@
   
   ## Help
   If you require any assistance please send us an email and we will respond as soon as possible. 
+
+  ## Link to Video 
+
+  https://drive.google.com/file/d/1Jcqh-Gmq_bTyypvUUC6PNQPdr3Scy60G/view
